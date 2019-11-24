@@ -11,8 +11,71 @@
         }
         
         function playRound(playerSelection, computerSelection) {
-            toLoweCase()
+            let pSelect = playerSelection.toLowerCase();
+            let cSelect = computerSelection.toLowerCase();          
+            if (pSelect == cSelect) {
+                console.log("Draw"); 
+            }
+            // Lose
+            if (pSelect == "rock" && cSelect == "paper") {
+                cScore++;
+                console.log("You Lose. " + cSelect + " beats " + pSelect); 
+            }   
+            // Lose
+            if (pSelect == "paper" && cSelect == "scissors") {
+                cScore++;
+                console.log("You Lose. " + cSelect + " beats " + pSelect); 
+            } 
+            // Lose
+            if (pSelect == "scissors" && cSelect == "rock") {
+                cScore++;
+                console.log("You Lose. " + cSelect + " beats " + pSelect); 
+            } 
+            // Win
+            if (pSelect == "rock" && cSelect == "scissors") {
+                pScore++;
+                console.log("You Win. " + cSelect + " beats " + pSelect); 
+            } 
+            // Win
+            if (pSelect == "scissors" && cSelect == "rock") {
+                pScore++;
+                console.log("You Win. " + cSelect + " beats " + pSelect); 
+            } 
+            // Win
+            if (pSelect == "paper" && cSelect == "rock") {
+                pScore++;
+                console.log("You Win. " + cSelect + " beats " + pSelect); 
+            } 
         }
-        let playerSelection
+        
+        function game() {
+            let i = 0
+            
+            while(i < 5){
+                const playerSelection = prompt("Choose Rock, Paper, Or Scissors", "Your Choice")
+                if (playerSelection !=["paper" || "rock" || "scissors"]) {
+                    console.log("Not An Answer, Try Again")
+            }   
+                else if (playerSelection == "paper" || "rock" || "scissors") {
+                i++;
+                }
+                    const computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection) 
+                console.log(pScore , cScore)
+            }
+            
+        }
+        let pScore = 0
+        let cScore = 0
+        
+        game()
+         
+        if (pScore > cScore) {
+            console.log("You Win The Game!") 
+        if (pScore == cScore) {
+            console.log("You Drawed The Game.") 
+        if (pScore < cScore) {
+            console.log("You Lose The Game, Better Luck Next Time") 
+        }
     </script>
 </html>
