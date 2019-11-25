@@ -1,0 +1,82 @@
+<html>
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+        function computerPlay() {
+            let choices = ["rock", "paper", "scissors"];
+            return choices[getRandomInt(3)];
+        }
+        
+        function playRound(playerSelection, computerSelection) {
+            let pSelect = playerSelection.toLowerCase();          
+            let cSelect = computerSelection.toLowerCase();
+            // Draw
+            if (pSelect == cSelect) {
+                console.log("Draw"); 
+            }
+            // Lose
+            else if (pSelect == "rock" && cSelect == "paper") {
+                cScore++;
+                console.log("You Lose. " + cSelect + " beats " + pSelect); 
+            }   
+            // Lose
+            else if (pSelect == "paper" && cSelect == "scissors") {
+                cScore++;
+                console.log("You Lose. " + cSelect + " beats " + pSelect); 
+            } 
+            // Lose
+            else if (pSelect == "scissors" && cSelect == "rock") {
+                cScore++;
+                console.log("You Lose. " + cSelect + " beats " + pSelect); 
+            } 
+            // Win
+            else if (pSelect == "rock" && cSelect == "scissors") {
+                pScore++;
+                console.log("You Win. " + pSelect + " beats " + cSelect); 
+            } 
+            // Win
+            else if (pSelect == "scissors" && cSelect == "paper") {
+                pScore++;
+                console.log("You Win. " + cSelect + " beats " + pSelect); 
+            } 
+            // Win
+            else if (pSelect == "paper" && cSelect == "rock") {
+                pScore++;
+                console.log("You Win. " + cSelect + " beats " + pSelect); 
+            } 
+        }
+        
+        function game() {
+            let i = 0;
+            //Loops game 5 times
+            while(i < 5){
+                let playerSelection = prompt("Choose rock, paper, or scissors:").toLowerCase(); //Prompts Player
+                while (!/rock|paper|scissors/.test(playerSelection)) { 
+                    console.log("Not an answer. Try again."); //Prompts Player If They Dont Answer Correctly
+                    playerSelection = prompt("Choose rock, paper, or scissors:");
+                }
+                let computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(pScore , cScore);
+                i++;
+            }
+        }
+
+            
+        let pScore = 0
+        let cScore = 0
+        //Invokes Code
+        game()
+         //End Game Telling You Win Result
+        if (pScore > cScore) {
+            console.log("You Win The Game!") 
+        }
+        if (pScore == cScore) {
+            console.log("You Drawed The Game.") 
+        }
+        if (pScore < cScore) {
+            console.log("You Lose The Game, Better Luck Next Time") 
+        }
+    </script>
+</html>
